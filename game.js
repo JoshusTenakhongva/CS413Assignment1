@@ -7,13 +7,14 @@ gameport.appendChild( renderer.view );
 
 var stage = new PIXI.Container();
 
+var field = new PIXI.Sprite( PIXI.Texture.fromImage( "field.png" ));
 var baseball_bat = new PIXI.Sprite( PIXI.Texture.fromImage( "bat.png" ));
 var baseball = new PIXI.Sprite( PIXI.Texture.fromImage( "ball.png" ));
 var target_1 = new PIXI.Sprite( PIXI.Texture.fromImage( "target.png" ));
 
-var pitcher_idle_frame = PIXI.Texture.fromFrame( "pitcher_idle.png" );
-var pitcher_windup_frame = PIXI.Texture.fromFrame( "pitcher_windup.png" );
-var pitcher_throw_frame = PIXI.Texture.fromFrame( "pitcher_throw.png" );
+var pitcher_idle_frame = PIXI.Texture.fromImage( "pitcher_idle.png" );
+var pitcher_windup_frame = PIXI.Texture.fromImage( "pitcher_windup.png" );
+var pitcher_throw_frame = PIXI.Texture.fromImage( "pitcher_throw.png" );
 
 var pitcher = new PIXI.Sprite( pitcher_idle_frame );
 
@@ -23,6 +24,12 @@ var ball_speed = 0;
 var ball_direction = 0.0;
 var target_size = 25;
 var score = 0;
+
+stage.addChild( field );
+field.anchor.x = 0.5;
+field.anchor.y = 0.5;
+field.position.x = 200;
+field.position.y = 200;
 
 stage.addChild( baseball_bat );
 baseball_bat.anchor.x = 0.5;

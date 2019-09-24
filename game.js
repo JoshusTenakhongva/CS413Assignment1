@@ -10,7 +10,7 @@ var stage = new PIXI.Container();
 var field = new PIXI.Sprite( PIXI.Texture.fromImage( "field.png" ));
 var baseball_bat = new PIXI.Sprite( PIXI.Texture.fromImage( "bat.png" ));
 var baseball = new PIXI.Sprite( PIXI.Texture.fromImage( "ball.png" ));
-var target_1 = new PIXI.Sprite( PIXI.Texture.fromImage( "target.png" ));
+var target_1 = new PIXI.Sprite( PIXI.Texture.fromImage( "glove.png" ));
 
 var pitcher_idle_frame = PIXI.Texture.fromImage( "pitcher_idle.png" );
 var pitcher_windup_frame = PIXI.Texture.fromImage( "pitcher_windup.png" );
@@ -35,7 +35,7 @@ stage.addChild( baseball_bat );
 baseball_bat.anchor.x = 0.5;
 baseball_bat.anchor.y = 0.9;
 baseball_bat.position.x = 350;
-baseball_bat.position.y = 215;
+baseball_bat.position.y = 245;
 //baseball_bat.rotation = -36;
 
 stage.addChild( pitcher );
@@ -78,14 +78,14 @@ function swingBatEventHandler( e )
 
     // Check if the ball position is inside the hitbox
     if( ball_x_position >= 300 &&
-        ball_x_position <= 380 &&
+        ball_x_position <= 390 &&
         baseball.position.y == 200 )
       {
 
       ball_speed = 0;
 
       // If so, then proceed to calculate the new ball direction
-      ball_direction = ( 350.0 - ball_x_position ) / 30.0;
+      ball_direction = ( 360.0 - ball_x_position ) / 30.0;
       ball_direction = ball_direction * 300 + 50;
 
       createjs.Tween.get( baseball.position ).to(
@@ -112,7 +112,7 @@ function pitchBallEventHandler( e )
     // Change the ball speed to move toward the bat
     ball_speed = 5;
 
-    pitcher.sprite( pitcher_throw_frame );
+    pitcher.texture( pitcher_throw_frame );
 		}
 	}
 

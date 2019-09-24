@@ -37,7 +37,7 @@ baseball_bat.anchor.x = 0.5;
 baseball_bat.anchor.y = 0.9;
 baseball_bat.position.x = 350;
 baseball_bat.position.y = 245;
-//baseball_bat.rotation = -36;
+baseball_bat.rotation = 2;
 
 stage.addChild( pitcher );
 pitcher.anchor.x = 0.5;
@@ -61,7 +61,8 @@ function swingBatEventHandler( e )
     // Save the current ball
     ball_x_position = baseball.position.x * 1.0;
 
-    //ball_speed = -5;
+    createjs.Tween.get( baseball_bat ).to( { rotation: -3 }, 250 )
+    .wait( 250 ).to( {rotation: 2 }, 250 );
 
     // Check if the ball position is inside the hitbox
     if( ball_x_position >= 300 &&
@@ -79,7 +80,6 @@ function swingBatEventHandler( e )
                                             {x: 0, y: ball_direction }, 1000 );
 
       }
-
     // Otherwise, it is a strike
 		}
 	}
@@ -130,7 +130,7 @@ function removeBall()
   ball_speed = 0;
   ball_direction = 0.0;
   stage.removeChild( baseball );
-  liveBall_flag = false; 
+  liveBall_flag = false;
   }
 
 function randomizeTargetPosition( target )

@@ -24,6 +24,7 @@ var ball_speed = 0;
 var ball_direction = 0.0;
 var target_size = 25;
 var score = 0;
+var liveBall_flag = false;
 
 stage.addChild( field );
 field.anchor.x = 0.5;
@@ -47,20 +48,6 @@ pitcher.position.y = 200;
 stage.addChild( target_1 );
 target_1.anchor.x = 0.5;
 target_1.anchor.y = 0.5;
-
-//createjs.RotationPlugin.install();
-
-
-/*
-	Stub functions
-*/
-
-function pitchAnimation()
-	{
-
-
-
-	}
 
 function swingBatEventHandler( e )
 	{
@@ -100,9 +87,10 @@ function swingBatEventHandler( e )
 function pitchBallEventHandler( e )
 	{
 
-	if( e.keyCode == 66 )
+	if( e.keyCode == 66 && liveBall_flag == false )
 		{
 
+    liveBall_flag = true;
     // Spawn the ball
     spawnBaseball();
 
@@ -132,15 +120,18 @@ function checkBallOutsideOfPlay()
       baseball.position.y <= 0 )
 		{
 
-    ball_speed = 0;
-    ball_direction = 0.0;
-		stage.removeChild( baseball );
-
-		return true;
+    removeBall();
 		}
-
-	return false;
 	}
+
+function removeBall()
+  {
+
+  ball_speed = 0;
+  ball_direction = 0.0;
+  stage.removeChild( baseball );
+  liveBall_flag = false; 
+  }
 
 function randomizeTargetPosition( target )
 	{
@@ -161,6 +152,7 @@ function checkTargetHit( target )
     //
     randomizeTargetPosition( target );
     score++;
+    removeBall();
     }
   }
 

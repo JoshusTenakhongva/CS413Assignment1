@@ -103,9 +103,6 @@ function pitchBallEventHandler( e )
 	if( e.keyCode == 66 )
 		{
 
-    // Check that the ball is live
-
-
     // Spawn the ball
     spawnBaseball();
 

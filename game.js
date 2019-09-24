@@ -11,6 +11,7 @@ var field = new PIXI.Sprite( PIXI.Texture.fromImage( "field.png" ));
 var baseball_bat = new PIXI.Sprite( PIXI.Texture.fromImage( "bat.png" ));
 var baseball = new PIXI.Sprite( PIXI.Texture.fromImage( "ball.png" ));
 var target_1 = new PIXI.Sprite( PIXI.Texture.fromImage( "glove.png" ));
+var batting_line = new PIXI.Sprite( PIXI.Texture.fromImage( "battling_line.png" )); 
 
 var pitcher_idle_frame = PIXI.Texture.fromImage( "pitcher_idle.png" );
 var pitcher_windup_frame = PIXI.Texture.fromImage( "pitcher_windup.png" );
@@ -31,6 +32,12 @@ field.anchor.x = 0.5;
 field.anchor.y = 0.5;
 field.position.x = 200;
 field.position.y = 200;
+
+stage.addChild( batting_line ); 
+batting_line.anchor.x = 0.5; 
+batting_line.anchor.y = 0.5; 
+batting_line.position.x = 350;
+batting_line.position.y = 215; 
 
 stage.addChild( baseball_bat );
 baseball_bat.anchor.x = 0.5;
